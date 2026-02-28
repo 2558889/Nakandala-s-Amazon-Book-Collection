@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 25.8.4.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+		pre { font-size: 10pt; font-family: "Liberation Mono", monospace; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Nakandala's Amazon Book Collection&lt;/title&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;
+        :root {
+            --primary: #2c3e50;
+            --accent: #e67e22;
+            --accent-hover: #d35400;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #e0e0e0;
+            --shadow: rgba(0,0,0,0.08);
+            --shadow-hover: rgba(0,0,0,0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme=&quot;dark&quot;] {
+            --primary: #ecf0f1;
+            --accent: #f39c12;
+            --accent-hover: #e67e22;
+            --bg: #1a1a2e;
+            --card-bg: #16213e;
+            --text: #ecf0f1;
+            --text-light: #95a5a6;
+            --border: #0f3460;
+            --shadow: rgba(0,0,0,0.3);
+            --shadow-hover: rgba(0,0,0,0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(var(--card-bg), 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px var(--shadow);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border);
+            color: var(--text);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            transform: rotate(15deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--card-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.03;
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(230, 126, 34, 0.4);
+            background: var(--accent-hover);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Search and Filter Section */
+        .controls {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3.5rem;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            font-size: 1rem;
+            background: var(--card-bg);
+            color: var(--text);
+            transition: var(--transition);
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(230, 126, 34, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .category-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .category-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+        }
+
+        /* Books Grid */
+        .books-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .book-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow-hover);
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .book-card:hover .book-cover img {
+            transform: scale(1.05);
+        }
+
+        .book-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .book-card:hover .book-overlay {
+            opacity: 1;
+        }
+
+        .view-text {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .book-info {
+            padding: 1.5rem;
+        }
+
+        .book-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(230, 126, 34, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            color: var(--primary);
+        }
+
+        .book-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .amazon-btn {
+            width: 100%;
+            padding: 0.9rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .amazon-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
+        }
+
+        /* About Section */
+        .about {
+            max-width: 800px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--card-bg);
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .contact-form button {
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            padding: 2.5rem;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            transform: scale(0.9);
+            animation: scaleIn 0.3s ease forwards;
+        }
+
+        @keyframes scaleIn {
+            to { transform: scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--border);
+            color: var(--text);
+        }
+
+        .modal-book-cover {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .modal-btn.primary {
+            background: var(--accent);
+            color: white;
+            border: none;
+        }
+
+        .modal-btn.secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .categories {
+                gap: 0.5rem;
+            }
+
+            .category-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .book-cover {
+                height: 350px;
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent);
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;progress-bar&quot; id=&quot;progressBar&quot;&gt;&lt;/div&gt;
+    
+    &lt;nav id=&quot;navbar&quot;&gt;
+        &lt;div class=&quot;nav-container&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;logo&quot;&gt;Nakandala Books&lt;/a&gt;
+            &lt;ul class=&quot;nav-links&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;#home&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#categories&quot;&gt;Categories&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;button class=&quot;theme-toggle&quot; id=&quot;themeToggle&quot; aria-label=&quot;Toggle dark mode&quot;&gt;🌙&lt;/button&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;div class=&quot;mobile-menu&quot; id=&quot;mobileMenu&quot;&gt;
+                &lt;span&gt;&lt;/span&gt;
+                &lt;span&gt;&lt;/span&gt;
+                &lt;span&gt;&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;section class=&quot;hero&quot; id=&quot;home&quot;&gt;
+        &lt;div class=&quot;hero-content&quot;&gt;
+            &lt;h1&gt;Nakandala's Amazon Book Collection&lt;/h1&gt;
+            &lt;p&gt;Explore My Published Books on Amazon&lt;/p&gt;
+            &lt;a href=&quot;#categories&quot; class=&quot;cta-button&quot;&gt;Browse Books&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;controls&quot; id=&quot;categories&quot;&gt;
+        &lt;div class=&quot;search-container&quot;&gt;
+            &lt;span class=&quot;search-icon&quot;&gt;🔍&lt;/span&gt;
+            &lt;input type=&quot;text&quot; class=&quot;search-input&quot; id=&quot;searchInput&quot; placeholder=&quot;Search books by title...&quot;&gt;
+        &lt;/div&gt;
+        
+        &lt;div class=&quot;categories&quot; id=&quot;categoryFilters&quot;&gt;
+            &lt;button class=&quot;category-btn active&quot; data-category=&quot;all&quot;&gt;All Books&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Arts &amp; Photography&quot;&gt;Arts &amp; Photography&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Biographies &amp; Memoirs&quot;&gt;Biographies &amp; Memoirs&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Business &amp; Money&quot;&gt;Business &amp; Money&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Calendars&quot;&gt;Calendars&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Children's Books&quot;&gt;Children's Books&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Comics &amp; Graphic Novels&quot;&gt;Comics &amp; Graphic Novels&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Computers &amp; Technology&quot;&gt;Computers &amp; Technology&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Cookbooks, Food &amp; Wine&quot;&gt;Cookbooks, Food &amp; Wine&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Crafts, Hobbies &amp; Home&quot;&gt;Crafts, Hobbies &amp; Home&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Education &amp; Teaching&quot;&gt;Education &amp; Teaching&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Engineering &amp; Transportation&quot;&gt;Engineering &amp; Transportation&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Health, Fitness &amp; Dieting&quot;&gt;Health, Fitness &amp; Dieting&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;History&quot;&gt;History&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Humor &amp; Entertainment&quot;&gt;Humor &amp; Entertainment&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Law&quot;&gt;Law&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Literature &amp; Fiction&quot;&gt;Literature &amp; Fiction&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Medical Books&quot;&gt;Medical Books&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Mystery, Thriller &amp; Suspense&quot;&gt;Mystery, Thriller &amp; Suspense&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Parenting &amp; Relationships&quot;&gt;Parenting &amp; Relationships&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Politics &amp; Social Sciences&quot;&gt;Politics &amp; Social Sciences&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Reference&quot;&gt;Reference&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Religion &amp; Spirituality&quot;&gt;Religion &amp; Spirituality&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Romance&quot;&gt;Romance&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Science &amp; Math&quot;&gt;Science &amp; Math&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Science Fiction &amp; Fantasy&quot;&gt;Science Fiction &amp; Fantasy&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Self-Help&quot;&gt;Self-Help&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Sports &amp; Outdoors&quot;&gt;Sports &amp; Outdoors&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Teen &amp; Young Adult&quot;&gt;Teen &amp; Young Adult&lt;/button&gt;
+            &lt;button class=&quot;category-btn&quot; data-category=&quot;Travel&quot;&gt;Travel&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;books-section&quot;&gt;
+        &lt;div class=&quot;books-grid&quot; id=&quot;booksGrid&quot;&gt;
+            &lt;!-- Books will be dynamically inserted here --&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;about&quot; id=&quot;about&quot;&gt;
+        &lt;h2&gt;About the Collection&lt;/h2&gt;
+        &lt;p&gt;Welcome to my personal book showcase. Here you'll find a curated selection of my published works available exclusively through Amazon KDP. Each book represents countless hours of research, writing, and dedication to providing valuable content for readers worldwide.&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;contact&quot; id=&quot;contact&quot;&gt;
+        &lt;div class=&quot;contact-container&quot;&gt;
+            &lt;h2&gt;Get in Touch&lt;/h2&gt;
+            &lt;p&gt;Have questions about my books or interested in collaborations?&lt;/p&gt;
+            &lt;form class=&quot;contact-form&quot; onsubmit=&quot;event.preventDefault(); alert('Thank you for your message!');&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Your Name&quot; required&gt;
+                &lt;input type=&quot;email&quot; placeholder=&quot;Your Email&quot; required&gt;
+                &lt;textarea rows=&quot;4&quot; placeholder=&quot;Your Message&quot; required&gt;&lt;/textarea&gt;
+                &lt;button type=&quot;submit&quot;&gt;Send Message&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 Nakandala's Amazon Book Collection&lt;br&gt;
+        All books are available exclusively on Amazon.&lt;/p&gt;
+    &lt;/footer&gt;
+
+    &lt;!-- Modal --&gt;
+    &lt;div class=&quot;modal&quot; id=&quot;bookModal&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;button class=&quot;modal-close&quot; id=&quot;modalClose&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;img src=&quot;&quot; alt=&quot;&quot; class=&quot;modal-book-cover&quot; id=&quot;modalCover&quot;&gt;
+            &lt;h3 id=&quot;modalTitle&quot;&gt;Book Title&lt;/h3&gt;
+            &lt;p id=&quot;modalDescription&quot;&gt;Book description goes here.&lt;/p&gt;
+            &lt;div class=&quot;modal-buttons&quot;&gt;
+                &lt;button class=&quot;modal-btn primary&quot; id=&quot;modalAmazonBtn&quot;&gt;View on Amazon&lt;/button&gt;
+                &lt;button class=&quot;modal-btn secondary&quot; id=&quot;modalCloseBtn&quot;&gt;Close&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // Book Data Array
+        const books = [
+            {
+                id: 1,
+                title: &quot;The Art of Digital Photography&quot;,
+                category: &quot;Arts &amp; Photography&quot;,
+                description: &quot;Master the fundamentals of digital photography with practical techniques for stunning visuals.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1554048612-387768052bf7?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE1&quot;
+            },
+            {
+                id: 2,
+                title: &quot;Journey of a Lifetime&quot;,
+                category: &quot;Biographies &amp; Memoirs&quot;,
+                description: &quot;An inspiring memoir about overcoming adversity and finding purpose in unexpected places.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE2&quot;
+            },
+            {
+                id: 3,
+                title: &quot;Startup Success Blueprint&quot;,
+                category: &quot;Business &amp; Money&quot;,
+                description: &quot;Essential strategies for entrepreneurs looking to build scalable and sustainable businesses.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1554774853-719586f8c277?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE3&quot;
+            },
+            {
+                id: 4,
+                title: &quot;2026 Nature Calendar&quot;,
+                category: &quot;Calendars&quot;,
+                description: &quot;Beautiful nature photography calendar featuring stunning landscapes from around the world.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE4&quot;
+            },
+            {
+                id: 5,
+                title: &quot;The Magic Forest&quot;,
+                category: &quot;Children's Books&quot;,
+                description: &quot;A whimsical adventure story for young readers about friendship and courage.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE5&quot;
+            },
+            {
+                id: 6,
+                title: &quot;Heroes of Tomorrow&quot;,
+                category: &quot;Comics &amp; Graphic Novels&quot;,
+                description: &quot;Epic graphic novel featuring stunning artwork and compelling superhero narratives.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE6&quot;
+            },
+            {
+                id: 7,
+                title: &quot;Python for Beginners&quot;,
+                category: &quot;Computers &amp; Technology&quot;,
+                description: &quot;Comprehensive guide to programming with Python, from basics to advanced concepts.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE7&quot;
+            },
+            {
+                id: 8,
+                title: &quot;Culinary Secrets&quot;,
+                category: &quot;Cookbooks, Food &amp; Wine&quot;,
+                description: &quot;Gourmet recipes and cooking techniques from around the world for home chefs.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE8&quot;
+            },
+            {
+                id: 9,
+                title: &quot;DIY Home Projects&quot;,
+                category: &quot;Crafts, Hobbies &amp; Home&quot;,
+                description: &quot;Creative home improvement projects and crafts for every skill level.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1581092921461-eab62e97a782?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE9&quot;
+            },
+            {
+                id: 10,
+                title: &quot;Modern Teaching Methods&quot;,
+                category: &quot;Education &amp; Teaching&quot;,
+                description: &quot;Innovative approaches to education for the 21st century classroom.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE10&quot;
+            },
+            {
+                id: 11,
+                title: &quot;Engineering Basics&quot;,
+                category: &quot;Engineering &amp; Transportation&quot;,
+                description: &quot;Fundamental principles of engineering explained with real-world applications.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE11&quot;
+            },
+            {
+                id: 12,
+                title: &quot;Wellness Revolution&quot;,
+                category: &quot;Health, Fitness &amp; Dieting&quot;,
+                description: &quot;Holistic approach to health combining fitness, nutrition, and mental wellbeing.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE12&quot;
+            },
+            {
+                id: 13,
+                title: &quot;Ancient Civilizations&quot;,
+                category: &quot;History&quot;,
+                description: &quot;Journey through the rise and fall of the world's greatest ancient empires.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE13&quot;
+            },
+            {
+                id: 14,
+                title: &quot;Comedy Writing 101&quot;,
+                category: &quot;Humor &amp; Entertainment&quot;,
+                description: &quot;Learn the art of comedy writing from stand-up to screenwriting.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1527224857830-43a7acc85260?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE14&quot;
+            },
+            {
+                id: 15,
+                title: &quot;Legal Guide for Everyone&quot;,
+                category: &quot;Law&quot;,
+                description: &quot;Understanding your rights and legal basics without the complex jargon.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE15&quot;
+            },
+            {
+                id: 16,
+                title: &quot;Echoes of the Past&quot;,
+                category: &quot;Literature &amp; Fiction&quot;,
+                description: &quot;A compelling historical fiction novel spanning generations and continents.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1474932430478-367dbb6832c1?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE16&quot;
+            },
+            {
+                id: 17,
+                title: &quot;Medical Terminology&quot;,
+                category: &quot;Medical Books&quot;,
+                description: &quot;Essential medical terms and concepts for students and healthcare professionals.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE17&quot;
+            },
+            {
+                id: 18,
+                title: &quot;The Midnight Killer&quot;,
+                category: &quot;Mystery, Thriller &amp; Suspense&quot;,
+                description: &quot;Gripping psychological thriller that will keep you guessing until the last page.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE18&quot;
+            },
+            {
+                id: 19,
+                title: &quot;Parenting with Purpose&quot;,
+                category: &quot;Parenting &amp; Relationships&quot;,
+                description: &quot;Modern parenting strategies for raising confident and compassionate children.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE19&quot;
+            },
+            {
+                id: 20,
+                title: &quot;Sociology Today&quot;,
+                category: &quot;Politics &amp; Social Sciences&quot;,
+                description: &quot;Exploring modern social structures and their impact on contemporary life.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE20&quot;
+            },
+            {
+                id: 21,
+                title: &quot;Dictionary of Dreams&quot;,
+                category: &quot;Reference&quot;,
+                description: &quot;Comprehensive guide to understanding the symbols and meanings in dreams.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE21&quot;
+            },
+            {
+                id: 22,
+                title: &quot;Spiritual Awakening&quot;,
+                category: &quot;Religion &amp; Spirituality&quot;,
+                description: &quot;A journey through meditation and mindfulness for inner peace.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE22&quot;
+            },
+            {
+                id: 23,
+                title: &quot;Love in Paris&quot;,
+                category: &quot;Romance&quot;,
+                description: &quot;A passionate romance novel set in the city of lights and love.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE23&quot;
+            },
+            {
+                id: 24,
+                title: &quot;Quantum Physics Explained&quot;,
+                category: &quot;Science &amp; Math&quot;,
+                description: &quot;Making complex scientific concepts accessible to everyone.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE24&quot;
+            },
+            {
+                id: 25,
+                title: &quot;Galactic Empires&quot;,
+                category: &quot;Science Fiction &amp; Fantasy&quot;,
+                description: &quot;Epic space opera featuring interstellar politics and alien civilizations.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE25&quot;
+            },
+            {
+                id: 26,
+                title: &quot;Mindset Mastery&quot;,
+                category: &quot;Self-Help&quot;,
+                description: &quot;Transform your thinking patterns to achieve personal and professional success.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE26&quot;
+            },
+            {
+                id: 27,
+                title: &quot;Extreme Sports Guide&quot;,
+                category: &quot;Sports &amp; Outdoors&quot;,
+                description: &quot;Adrenaline-pumping activities and outdoor adventures for thrill seekers.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1522163182402-834f871fd851?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE27&quot;
+            },
+            {
+                id: 28,
+                title: &quot;The Lost Kingdom&quot;,
+                category: &quot;Teen &amp; Young Adult&quot;,
+                description: &quot;Fantasy adventure perfect for young adult readers seeking magic and mystery.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE28&quot;
+            },
+            {
+                id: 29,
+                title: &quot;Hidden Gems of Europe&quot;,
+                category: &quot;Travel&quot;,
+                description: &quot;Discover off-the-beaten-path destinations across the European continent.&quot;,
+                cover: &quot;https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&amp;h=600&amp;fit=crop&quot;,
+                amazonLink: &quot;https://amazon.com/dp/B08EXAMPLE29&quot;
+            }
+        ];
+
+        // DOM Elements
+        const booksGrid = document.getElementById('booksGrid');
+        const searchInput = document.getElementById('searchInput');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const themeToggle = document.getElementById('themeToggle');
+        const modal = document.getElementById('bookModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+        const modalAmazonBtn = document.getElementById('modalAmazonBtn');
+        const progressBar = document.getElementById('progressBar');
+
+        let currentCategory = 'all';
+        let searchTerm = '';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () =&gt; {
+            renderBooks();
+            setupEventListeners();
+            checkTheme();
+        });
+
+        // Render Books
+        function renderBooks() {
+            const filteredBooks = books.filter(book =&gt; {
+                const matchesCategory = currentCategory === 'all' || book.category === currentCategory;
+                const matchesSearch = book.title.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesCategory &amp;&amp; matchesSearch;
+            });
+
+            booksGrid.innerHTML = '';
+
+            if (filteredBooks.length === 0) {
+                booksGrid.innerHTML = '&lt;div style=&quot;grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-light);&quot;&gt;No books found matching your criteria.&lt;/div&gt;';
+                return;
+            }
+
+            filteredBooks.forEach((book, index) =&gt; {
+                const card = createBookCard(book, index);
+                booksGrid.appendChild(card);
+            });
+        }
+
+        // Create Book Card
+        function createBookCard(book, index) {
+            const card = document.createElement('div');
+            card.className = 'book-card';
+            card.style.animationDelay = `${index * 0.05}s`;
+            
+            card.innerHTML = `
+                &lt;div class=&quot;book-cover&quot;&gt;
+                    &lt;img src=&quot;${book.cover}&quot; alt=&quot;${book.title}&quot; loading=&quot;lazy&quot;&gt;
+                    &lt;div class=&quot;book-overlay&quot;&gt;
+                        &lt;span class=&quot;view-text&quot;&gt;Click to Preview →&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;book-info&quot;&gt;
+                    &lt;span class=&quot;book-category&quot;&gt;${book.category}&lt;/span&gt;
+                    &lt;h3 class=&quot;book-title&quot;&gt;${book.title}&lt;/h3&gt;
+                    &lt;p class=&quot;book-description&quot;&gt;${book.description}&lt;/p&gt;
+                    &lt;button class=&quot;amazon-btn&quot; onclick=&quot;openAmazon('${book.amazonLink}')&quot;&gt;
+                        &lt;span&gt;📖&lt;/span&gt; View on Amazon
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            `;
+
+            card.addEventListener('click', (e) =&gt; {
+                if (!e.target.closest('.amazon-btn')) {
+                    openModal(book);
+                }
+            });
+
+            return card;
+        }
+
+        // Open Amazon Link
+        function openAmazon(url) {
+            window.open(url, '_blank');
+        }
+
+        // Modal Functions
+        function openModal(book) {
+            document.getElementById('modalCover').src = book.cover;
+            document.getElementById('modalTitle').textContent = book.title;
+            document.getElementById('modalDescription').textContent = book.description;
+            modalAmazonBtn.onclick = () =&gt; openAmazon(book.amazonLink);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        function setupEventListeners() {
+            // Search
+            searchInput.addEventListener('input', (e) =&gt; {
+                searchTerm = e.target.value;
+                renderBooks();
+            });
+
+            // Category Filters
+            categoryBtns.forEach(btn =&gt; {
+                btn.addEventListener('click', () =&gt; {
+                    categoryBtns.forEach(b =&gt; b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.dataset.category;
+                    renderBooks();
+                });
+            });
+
+            // Theme Toggle
+            themeToggle.addEventListener('click', toggleTheme);
+
+            // Modal Close
+            modalClose.addEventListener('click', closeModal);
+            modalCloseBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) =&gt; {
+                if (e.target === modal) closeModal();
+            });
+
+            // Keyboard
+            document.addEventListener('keydown', (e) =&gt; {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // Scroll Progress
+            window.addEventListener('scroll', () =&gt; {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.width = scrolled + &quot;%&quot;;
+            });
+
+            // Smooth Scroll for Navigation
+            document.querySelectorAll('a[href^=&quot;#&quot;]').forEach(anchor =&gt; {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Theme Management
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        function checkTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenu').addEventListener('click', () =&gt; {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>
